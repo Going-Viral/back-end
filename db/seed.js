@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const CovidData = require('../models/CovidData');
 const CovidDataFile = require('../data/Bing-COVID19-Data-sample.json');
@@ -64,4 +63,4 @@ CovidData.create([...Array(CovidDataFile)].map(({
 // ISO3: ISO3 !== '' ? ISO3 : null,
 // countryRegion: Country_Region !== '' ? Country_Region : null,
 // subRegion1: AdminRegion1 !== '' ? AdminRegion1 : null,
-// subRegion2: AdminRegion2 !== '' ? AdminRegion2 : null,
+// subRegion2: AdminRegion2 !== '' ? AdminRegion2 : null
