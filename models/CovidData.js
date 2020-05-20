@@ -6,7 +6,8 @@ const schema = new mongoose.Schema({
     required: true
   },
   date: {
-    type: String
+    type: String,
+    required: true
   },
   totalCases: {
     type: String
@@ -27,10 +28,12 @@ const schema = new mongoose.Schema({
     type: String
   },
   latitude: {
-    type: String
+    type: String,
+    required: true
   },
   longitude: {
-    type: String
+    type: String,
+    required: true
   },
   ISO2: {
     type: String
