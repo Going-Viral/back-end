@@ -47,7 +47,8 @@ const schema = new mongoose.Schema({
   },
   // Originally ISO2
   countryCode: {
-    type: String
+    type: String,
+    required: true
   },
   // Originally ISO3
   ISO3: {

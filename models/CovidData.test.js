@@ -14,7 +14,8 @@ describe('CovidData model', () => {
       id: 78349278340,
       date: '3/15/2020',
       latitude: '43.073051',
-      longitude: '-89.401230'
+      longitude: '-89.401230',
+      countryCode: 'US'
     });
 
     expect(covidData.toJSON()).toEqual({
@@ -22,7 +23,8 @@ describe('CovidData model', () => {
       id: 78349278340,
       date: '3/15/2020',
       latitude: '43.073051',
-      longitude: '-89.401230'
+      longitude: '-89.401230',
+      countryCode: 'US'
     });
   });
 });
