@@ -20,4 +20,9 @@ describe('alchemy-app routes', () => {
     await mongoose.connection.close();
     return mongod.stop();
   });
+  it('fakes an app test', () => {
+    return request(app)
+      .get('/')
+      .then(() => {});
+  });
 });
