@@ -11,7 +11,7 @@ describe('CovidData model', () => {
 
   it('has all required fields', () => {
     const covidData = new CovidData({
-      id: '43jkj4k32',
+      id: 78349278340,
       date: '3/15/2020',
       latitude: '43.073051',
       longitude: '-89.401230'
@@ -19,7 +19,7 @@ describe('CovidData model', () => {
 
     expect(covidData.toJSON()).toEqual({
       _id: expect.any(mongoose.Types.ObjectId),
-      id: '43jkj4k32',
+      id: 78349278340,
       date: '3/15/2020',
       latitude: '43.073051',
       longitude: '-89.401230'

@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
   },
   // Originally Updated
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   // Originally Confirmed
@@ -37,12 +37,12 @@ const schema = new mongoose.Schema({
   },
   // Originally Latitude
   latitude: {
-    type: Number,
+    type: String,
     required: true
   },
   // Originally Longitude
   longitude: {
-    type: Number,
+    type: String,
     required: true
   },
   // Originally ISO2
