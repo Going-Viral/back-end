@@ -1,0 +1,41 @@
+[
+  {
+    "country_region_code": "US",
+    "country_region": "United States",
+    "sub_region_1": "Oregon",
+    "sub_region_2": "Multnomah County",
+    "date": "2020-02-16",
+    "retail_and_recreation_percent_change_from_baseline": "21",
+    "grocery_and_pharmacy_percent_change_from_baseline": "0",
+    "parks_percent_change_from_baseline": "29",
+    "transit_stations_percent_change_from_baseline": "2",
+    "workplaces_percent_change_from_baseline": "2",
+    "residential_percent_change_from_baseline": "-1"
+  },
+  {
+    "country_region_code": "US",
+    "country_region": "United States",
+    "sub_region_1": "Oregon",
+    "sub_region_2": "Multnomah County",
+    "date": "2020-02-17",
+    "retail_and_recreation_percent_change_from_baseline": "9",
+    "grocery_and_pharmacy_percent_change_from_baseline": "1",
+    "parks_percent_change_from_baseline": "67",
+    "transit_stations_percent_change_from_baseline": "-7",
+    "workplaces_percent_change_from_baseline": "-25",
+    "residential_percent_change_from_baseline": "4"
+  },
+  {
+    "country_region_code": "US",
+    "country_region": "United States",
+    "sub_region_1": "Oregon",
+    "sub_region_2": "Multnomah County",
+    "date": "2020-02-18",
+    "retail_and_recreation_percent_change_from_baseline": "2",
+    "grocery_and_pharmacy_percent_change_from_baseline": "2",
+    "parks_percent_change_from_baseline": "39",
+    "transit_stations_percent_change_from_baseline": "7",
+    "workplaces_percent_change_from_baseline": "1",
+    "residential_percent_change_from_baseline": "-1"
+  }
+]

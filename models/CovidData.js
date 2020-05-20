@@ -1,48 +1,65 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+  // Originally ID
   id: {
-    type: String
+    type: Number,
+    required: true
   },
+  // Originally Updated
   date: {
-    type: String
+    type: Date,
+    required: true
   },
+  // Originally Confirmed
   totalCases: {
-    type: String
+    type: Number
   },
+  // Originally ComfirmedChange
   newCases: {
-    type: String
+    type: Number
   },
+  // Originally Deaths
   totalDeaths: {
-    type: String
+    type: Number
   },
+  // Originally DeathsChange
   newDeaths: {
-    type: String
+    type: Number
   },
+  // Originally Recovered
   totalRecovered: {
-    type: String
+    type: Number
   },
+  // Originally RecoveredChange
   newRecovered: {
-    type: String
+    type: Number
   },
+  // Originally Latitude
   latitude: {
-    type: String
+    type: Number
   },
+  // Originally Longitude
   longitude: {
+    type: Number
+  },
+  // Originally ISO2
+  countryCode: {
     type: String
   },
-  ISO2: {
-    type: String
-  },
+  // Originally ISO3
   ISO3: {
     type: String
   },
-  countryRegion: {
+  // Originally Country_Region
+  countryName: {
     type: String
   },
+  // Originally AdminRegion1
   subRegion1: {
     type: String
   },
+  // Originally AdminRegion2
   subRegion2: {
     type: String
   }

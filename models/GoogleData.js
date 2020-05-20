@@ -1,49 +1,52 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  country_region_code: {
-    type: String,
-    required: true
-  },
-  country_region: {
-    type: String,
-    required: true
-  },
-  sub_region_1: {
-    type: String,
-    required: true
-  },
-  sub_region_2: {
-    type: String,
-    required: true
-  },
+  // Originally date
   date: {
     type: Date,
     required: true
   },
-  retail_and_recreation_percent_change_from_baseline: {
-    type: Number,
+  // Originally country_region_code
+  countryCode: {
+    type: String,
     required: true
   },
-  grocery_and_pharmacy_percent_change_from_baseline: {
-    type: Number,
+  // Originally country_region
+  countryName: {
+    type: String,
     required: true
   },
-  parks_percent_change_from_baseline: {
-    type: Number,
-    required: true
+  // Originally subRegion1
+  subRegion1: {
+    type: String
   },
-  transit_stations_percent_change_from_baseline: {
-    type: Number,
-    required: true
+  // Originally sub_region_2
+  subRegion2: {
+    type: String
   },
-  workplaces_percent_change_from_baseline: {
-    type: Number,
-    required: true
+  // Originally retail_and_recreation_percent_change_from_baseline
+  retailChange: {
+    type: Number
   },
-  residential_percent_change_from_baseline: {
-    type: Number,
-    required: true
+  // Originally grocery_and_pharmacy_percent_change_from_baseline
+  groceryChange: {
+    type: Number
+  },
+  // Originally parks_percent_change_from_baseline
+  parksChange: {
+    type: Number
+  },
+  // Originally transit_stations_percent_change_from_baseline
+  transitChange: {
+    type: Number
+  },
+  // Originally workplaces_percent_change_from_baseline
+  workplacesChange: {
+    type: Number
+  },
+  // Originally residential_percent_change_from_baseline
+  residentialChange: {
+    type: Number
   }
 });
 
