@@ -41,26 +41,3 @@ CovidData.create([...Array(CovidDataFile)].map(({
     subRegion2: AdminRegion2
   }
 )));
-
-
-// const posts = await Post.create([...Array(postsToCreate)].map(() => ({
-//   user: chance.pickone(users)._id,
-//   photoUrl: chance.url(),
-//   caption: chance.sentence(),
-//   tags: [chance.word(), chance.word()]
-// })));
-
-
-// totalCases: Confirmed !== '' ? Confirmed : null,
-// newCases: ConfirmedChange !== '' ? ConfirmedChange : null,
-// totalDeaths: Deaths !== '' ? Deaths : null,
-// newDeaths: DeathsChange !== '' ? DeathsChange : null, 
-// totalRecovered: Recovered !== '' ? Recovered : null,
-// newRecovered: RecoveredChange !== '' ? RecoveredChange : null,
-// latitude: Latitude !== '' ? Latitude : null,
-// longitude: Longitude !== '' ? Longitude : null,
-// ISO2: ISO2 !== '' ? ISO2 : null,
-// ISO3: ISO3 !== '' ? ISO3 : null,
-// countryRegion: Country_Region !== '' ? Country_Region : null,
-// subRegion1: AdminRegion1 !== '' ? AdminRegion1 : null,
-// subRegion2: AdminRegion2 !== '' ? AdminRegion2 : null
