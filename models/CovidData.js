@@ -37,11 +37,13 @@ const schema = new mongoose.Schema({
   },
   // Originally Latitude
   latitude: {
-    type: Number
+    type: Number,
+    required: true
   },
   // Originally Longitude
   longitude: {
-    type: Number
+    type: Number,
+    required: true
   },
   // Originally ISO2
   countryCode: {
