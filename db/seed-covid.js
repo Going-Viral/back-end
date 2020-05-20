@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const CovidData = require('../models/CovidData');
-const CovidDataFile = require('../data/Bing-COVID19-Data-sample.json');
+const CovidDataFile = require('../data_gitignore/csvjson.json');
 
 connect();
 
@@ -46,6 +46,6 @@ const seedData = async() => {
   return data;
 };
 
-seedData()
-  .then(result => console.log(result));
+seedData();
+  // .then(result => console.log(result));
   // .then(mongoose.connection.close());
