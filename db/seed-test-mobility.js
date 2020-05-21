@@ -2,13 +2,13 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const MobilityData = require('../lib/models/MobilityData');
-const GoogleDataFile = require('../data_ignore/Global_Mobility_Report_v2.json');
+const TestMobilityData = require('../lib/models/TestMobilityData');
+const TestMobilityDataFile = require('../data/Global_Mobility_Report-sample-2.json');
 
 connect();
 
 const seedData = async() => {
-  const data = await MobilityData.create(GoogleDataFile.map(({ 
+  const data = await TestMobilityData.create(TestMobilityDataFile.map(({ 
     country_region_code,
     country_region,
     sub_region_1,
@@ -43,11 +43,3 @@ seedData();
   // .then(result => console.log(result));
   // .then(mongoose.connection.close());
 
-
-// NOTES: 
-// • Expand memory allocated to node process to complete processing of large JSON document:
-//   node --max-old-space-size=8192 ./db/seed-google.js 
-// • Extend mongoose's timeout window so MongoDB won't disconnect before JSON conversion completes:
-//   see mongoose.connect parameters
-// • Use https://www.npmjs.com/package/csv2json to convert large CSVs to JSON: 
-//   csv2json -d <inputFilename>.csv <outputFilename>.json
