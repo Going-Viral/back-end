@@ -2,13 +2,13 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const GoogleData = require('../models/GoogleData');
+const MobilityData = require('../models/MobilityData');
 const GoogleDataFile = require('../data_ignore/Global_Mobility_Report_v2.json');
 
 connect();
 
 const seedData = async() => {
-  const data = await GoogleData.create(GoogleDataFile.map(({ 
+  const data = await MobilityData.create(GoogleDataFile.map(({ 
     country_region_code,
     country_region,
     sub_region_1,
