@@ -2,8 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const TestMobilityData = require('../models/TestMobilityData');
-// const GoogleDataFile = require('../data_gitignore/doit.json');
+const TestMobilityData = require('../lib/models/TestMobilityData');
 const TestMobilityDataFile = require('../data/Global_Mobility_Report-sample-2.json');
 
 connect();

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const TestCovidData = require('../models/TestCovidData');
+const TestCovidData = require('../lib/models/TestCovidData');
 const TestCovidDataFile = require('../data/Test-Bing-COVID19-Data.json');
 
 connect();
