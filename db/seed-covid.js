@@ -3,13 +3,12 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const CovidData = require('../lib/models/CovidData');
-const CovidDataFile = require('../data_gitignore/Bing-COVID19-Data_v2.json');
-// const CovidDataFile = require('../data/Bing-COVID19-Data-sample.json');
+const CovidDataFile = require('../data_gitignore/Bing-COVID19-Data_v3.json');
 
 connect();
 
-const seedData = async() => {
-  const data = await CovidData.create(CovidDataFile.map(({ 
+const seedData = () => {
+  return CovidData.create(CovidDataFile.map(({ 
     ID, 
     Updated, 
     Confirmed, 
@@ -43,13 +42,10 @@ const seedData = async() => {
       newRecovered: RecoveredChange !== '' ? RecoveredChange : null,
     }
   )));
-
-  return data;
 };
 
-seedData();
-  // .then(result => console.log(result));
-  // .then(mongoose.connection.close());
+seedData()
+  .then(() => mongoose.connection.close());
 
 
 // NOTES: 

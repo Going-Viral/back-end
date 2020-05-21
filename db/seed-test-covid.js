@@ -7,8 +7,8 @@ const TestCovidDataFile = require('../data/Test-Bing-COVID19-Data.json');
 
 connect();
 
-const seedData = async() => {
-  const data = await TestCovidData.create(TestCovidDataFile.map(({ 
+const seedData = () => {
+  return TestCovidData.create(TestCovidDataFile.map(({ 
     ID, 
     Updated, 
     Confirmed, 
@@ -42,13 +42,11 @@ const seedData = async() => {
       newRecovered: RecoveredChange !== '' ? RecoveredChange : null,
     }
   )));
-
-  return data;
 };
 
-seedData();
-  // .then(result => console.log(result));
-  // .then(mongoose.connection.close());
+seedData()
+  .then(result => console.log(result))
+  .then(() => mongoose.connection.close());
 
 
 // NOTES: 
