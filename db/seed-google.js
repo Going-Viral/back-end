@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const MobilityData = require('../models/MobilityData');
+const MobilityData = require('../lib/models/MobilityData');
 const GoogleDataFile = require('../data_ignore/Global_Mobility_Report_v2.json');
 
 connect();
