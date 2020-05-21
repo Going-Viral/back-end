@@ -3,12 +3,12 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const TestMobilityData = require('../lib/models/TestMobilityData');
-const TestMobilityDataFile = require('../data/Global_Mobility_Report-sample-2.json');
+const TestMobilityDataFile = require('../data/Test-Global_Mobility_Report-sample.json');
 
 connect();
 
-const seedData = async() => {
-  const data = await TestMobilityData.create(TestMobilityDataFile.map(({ 
+const seedData = () => {
+  return TestMobilityData.create(TestMobilityDataFile.map(({ 
     country_region_code,
     country_region,
     sub_region_1,
@@ -35,11 +35,8 @@ const seedData = async() => {
       residentialChange: residential_percent_change_from_baseline !== '' ? residential_percent_change_from_baseline : null,
     }
   )));
-
-  return data;
 };
 
-seedData();
-  // .then(result => console.log(result));
-  // .then(mongoose.connection.close());
-
+seedData()
+  .then(result => console.log(result))
+  .finally(() => mongoose.connection.close());
