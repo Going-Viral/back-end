@@ -8,6 +8,7 @@ const CovidDataFile = require('../data_gitignore/Bing-COVID19-Data_v3.json');
 connect();
 
 const seedData = () => {
+  const orNull = val => val !== '' ? val : null;
   return CovidData.create(CovidDataFile.map(({ 
     ID, 
     Updated, 
@@ -28,18 +29,18 @@ const seedData = () => {
     {
       id: ID,
       date: Updated,
-      countryCode: ISO2 !== '' ? ISO2 : null,
-      countryName: Country_Region !== '' ? Country_Region : null,
-      subRegion1: AdminRegion1 !== '' ? AdminRegion1 : null,
-      subRegion2: AdminRegion2 !== '' ? AdminRegion2 : null,
-      latitude: Latitude !== '' ? Latitude : null,
-      longitude: Longitude !== '' ? Longitude : null,
-      totalCases: Confirmed !== '' ? Confirmed : null,
-      newCases: ConfirmedChange !== '' ? ConfirmedChange : null,
-      totalDeaths: Deaths !== '' ? Deaths : null,
-      newDeaths: DeathsChange !== '' ? DeathsChange : null, 
-      totalRecovered: Recovered !== '' ? Recovered : null,
-      newRecovered: RecoveredChange !== '' ? RecoveredChange : null,
+      countryCode: orNull(ISO2),
+      countryName: orNull(Country_Region),
+      subRegion1: orNull(AdminRegion1),
+      subRegion2: orNull(AdminRegion2),
+      latitude: orNull(Latitude),
+      longitude: orNull(Longitude),
+      totalCases: orNull(Confirmed),
+      newCases: orNull(ConfirmedChange),
+      totalDeaths: orNull(Deaths),
+      newDeaths: orNull(DeathsChange), 
+      totalRecovered: orNull(Recovered),
+      newRecovered: orNull(RecoveredChange),
     }
   )));
 };
