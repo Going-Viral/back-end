@@ -8,6 +8,7 @@ const MobilityDataFile = require('../data_gitignore/Global_Mobility_Report_v2.js
 connect();
 
 const seedData = () => {
+  const orNull = val => val !== '' ? val : null;
   return MobilityData.create(MobilityDataFile.map(({ 
     country_region_code,
     country_region,

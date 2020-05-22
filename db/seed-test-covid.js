@@ -2,13 +2,13 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
+const orNull = require('../lib/utils/utils');
 const TestCovidData = require('../lib/models/TestCovidData');
 const TestCovidDataFile = require('../data/Test-Bing-COVID19-Data.json');
 
 connect();
 
 const seedData = () => {
-  const orNull = val => val !== '' ? val : null;
   return TestCovidData.create(TestCovidDataFile.map(({ 
     ID, 
     Updated, 
