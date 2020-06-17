@@ -2,14 +2,35 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const orNull = require('../lib/utils/utils');
+const { orNull } = require('../lib/utils/utils');
 const MobilityData = require('../lib/models/MobilityData');
-const MobilityDataFile = require('../data_gitignore/Global_Mobility_Report_v2.json');
+const MobilityDataFile = require('../data_gitignore/Global_Mobility_Report_0615.json');
 
 connect();
 
-const seedData = () => {
-  return MobilityData.create(MobilityDataFile.map(({ 
+const seedDataInChunks = async(dataFile) => {
+  const start = new Date();
+  let lap = start;
+  const chunkSize = 50000;
+  const totalChunks = Math.ceil(dataFile.length / chunkSize);
+  
+  console.log(`Processing ${dataFile.length} records in ${totalChunks} batches`);
+
+  for(let count = 1; count <= totalChunks; count++) {
+    const lowerThreshold = count * chunkSize - chunkSize;
+    const upperThreshold = (count * chunkSize < dataFile.length) ? count * chunkSize : dataFile.length;
+    const dataChunk = dataFile.filter((_, index) => index >= lowerThreshold && index < upperThreshold);
+    await seedData(dataChunk);
+    const end = new Date();
+    const lapTime = (end - lap) / 1000;
+    const totalTime = (end - start) / 1000;
+    console.log(`Batch ${count} | Records ${lowerThreshold}-${upperThreshold - 1} | ${lapTime} seconds | ${totalTime} total seconds elapsed`); 
+    lap = end;
+  }
+};
+
+const seedData = (data) => {
+  return MobilityData.create(data.map(({ 
     country_region_code,
     country_region,
     sub_region_1,
@@ -38,7 +59,7 @@ const seedData = () => {
   )));
 };
 
-seedData()
+seedDataInChunks(MobilityDataFile)
   .then(() => mongoose.connection.close());
 
 
