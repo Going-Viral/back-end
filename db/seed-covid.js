@@ -2,15 +2,47 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
-const orNull = require('../lib/utils/utils');
+const { orNull } = require('../lib/utils/utils');
 const CovidData = require('../lib/models/CovidData');
-const CovidDataFile = require('../data_gitignore/Bing-COVID19-Data_v3.json');
+const CovidDataFile = require('../data_gitignore/Bing-COVID19-Data_0616.json');
 
 connect();
 
-const seedData = () => {
-  return CovidData.create(CovidDataFile.map(({ 
-    ID, 
+// Set date range to match Mobility data set
+const inDateRange = (num) => {
+  if(!num) return false;
+  else {
+    const thisDate = Number(num.slice(0, 2) + num.slice(3, 5));
+    return (thisDate >= 215 && thisDate <= 612);
+  }
+};
+
+const seedDataInChunks = async(dataFile) => {
+  const start = new Date();
+  let lap = start;
+  let totalRecords = 0;
+  const chunkSize = 50000;
+  const totalChunks = Math.ceil(dataFile.length / chunkSize);
+  
+  console.log(`Processing ${dataFile.length} records in ${totalChunks} batches...`);
+
+  for(let count = 1; count <= totalChunks; count++) {
+    const lowerThreshold = count * chunkSize - chunkSize;
+    const upperThreshold = (count * chunkSize < dataFile.length) ? count * chunkSize : dataFile.length;
+    const dataChunk = dataFile.filter((item, index) => index >= lowerThreshold && index < upperThreshold && inDateRange(item.Updated));
+    await seedData(dataChunk);
+    const end = new Date();
+    const lapTime = (end - lap) / 1000;
+    const totalTime = (end - start) / 1000;
+    console.log(`Batch ${count} | Adding ${dataChunk.length} records from range ${lowerThreshold}-${upperThreshold - 1} | ${lapTime}s | ${totalTime}s elapsed`); 
+    lap = end;
+    totalRecords += dataChunk.length;
+  }
+  return totalRecords;
+};
+
+const seedData = (data) => {
+  return CovidData.create(data.map(({ 
     Updated, 
     Confirmed, 
     ConfirmedChange, 
@@ -21,13 +53,11 @@ const seedData = () => {
     Latitude, 
     Longitude, 
     ISO2, 
-    ISO3, 
     Country_Region, 
     AdminRegion1, 
     AdminRegion2 
   }) => (
     {
-      id: ID,
       date: Updated,
       countryCode: orNull(ISO2),
       countryName: orNull(Country_Region),
@@ -45,7 +75,8 @@ const seedData = () => {
   )));
 };
 
-seedData()
+seedDataInChunks(CovidDataFile)
+  .then(total => console.log(`Added ${total} out of ${CovidDataFile.length} records.`))
   .then(() => mongoose.connection.close());
 
 
